@@ -83,7 +83,7 @@ class SnakeGameAI:
             reward = 10
             self._place_food()
         else:
-            reward = -1
+            reward = 0
             self.snake.pop()
 
         self._update_ui()
