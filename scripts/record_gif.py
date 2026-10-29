@@ -18,8 +18,8 @@ from snake_rl import game as game_module
 from snake_rl.agent import Agent
 from snake_rl.game import SnakeGameAI
 
-RECORD_GAMES = [1, 20, 60, 100, 150]
-MAX_FRAMES_PER_GAME = 250
+RECORD_GAMES = [1, 50, 80, 100]
+MAX_FRAMES_PER_GAME = 300
 FRAME_MS = 40
 SCALE = 0.5
 OUT = sys.argv[1] if len(sys.argv) > 1 else "assets/training.gif"
@@ -27,6 +27,8 @@ OUT = sys.argv[1] if len(sys.argv) > 1 else "assets/training.gif"
 random.seed(0)
 np.random.seed(0)
 torch.manual_seed(0)
+# tiny network: extra threads only add overhead
+torch.set_num_threads(1)
 
 # no need to wait between frames when nobody is watching
 game_module.SPEED = 0
